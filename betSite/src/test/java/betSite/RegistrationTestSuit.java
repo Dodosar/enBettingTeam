@@ -1,5 +1,10 @@
 package betSite;
+
 import org.testng.annotations.Test;
+
+
+
+import Properties.TestData;
 
 
 /*create test by Dima Tiurin*/
@@ -7,15 +12,11 @@ import org.testng.annotations.Test;
 public class RegistrationTestSuit extends WebDriverSettings {
 	BetSite objBettingSite;
 
-	String email = "tiurindmitry1989@gmail.com";
-	String password = "Dima650065";
-	String confirpassword = "Dima650065";
-	String incorectemail = "TEST1";
-	String incorrectpas = "123";
-	String incorrectconpas = "999";
+
 
 	@Test(priority = 0)
 	public void LogIn() {
+		
 		// Open the web site, check the title and got to sing up window
 		objBettingSite = new BetSite(driver);
 		System.out.println("Step 1: Check Title on Main Page");
@@ -28,9 +29,9 @@ public class RegistrationTestSuit extends WebDriverSettings {
 	public void IncorrectEmail() throws Exception {
 		// test sing up form for registration. And assert message when it is
 		// incorrect
-		objBettingSite.mainPage().typeInThefield("email", incorectemail).then()
-				.typeInThefield("password", password).then()
-				.typeInThefield("cpassword", confirpassword).then()
-				.isSelectedCheckbox("checkbox").clickOn("signup");// .CheckPopUpMessage("popup");
+		objBettingSite.mainPage().typeValueInRegistrationForm("email", TestData.value("email")).then()
+				.typeValueInRegistrationForm("password",TestData.value("password")).then()
+				.typeValueInRegistrationForm("cpassword", TestData.value("confirpassword")).then()
+				.SelectCheckBoxInRegistrationForm("checkbox").clickOn("signup");// .CheckPopUpMessage("popup");
 	}
 }

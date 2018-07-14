@@ -2,6 +2,8 @@ package betSite;
 
 import org.openqa.selenium.WebDriver;
 
+import FunctionLibrary.MainPage;
+
 public class BetSite {
 	WebDriver driver;
 	

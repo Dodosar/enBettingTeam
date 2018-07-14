@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+
 //import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,16 +29,19 @@ import org.testng.annotations.AfterTest;
 //import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
+import Properties.Propert;
+
 public class WebDriverSettings extends EmailReport {
 	protected static WebDriver driver;
 
 	/*
-	 * @BeforeClass public static void setupClass() {
+	 * @BeforeClass 
+	 * public static void setupClass() {
 	 * ChromeDriverManager.getInstance().setup(); }
-	 */
 
-	/*
-	 * @BeforeTest public void setUp() throws Exception { driver = new
+	 * @BeforeTest 
+	 * public void setUp() throws Exception { 
+	 * driver = new
 	 * ChromeDriver();
 	 * 
 	 * driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //
@@ -87,7 +91,7 @@ public class WebDriverSettings extends EmailReport {
 			throws MalformedURLException {
 		switch (browser) {
 		case "CH":
-			System.setProperty("webdriver.chrome.driver", ".\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", Propert.getProperties("Chromewebdriver_path"));
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--start-maximized");
@@ -103,7 +107,7 @@ public class WebDriverSettings extends EmailReport {
 			try {
 				System.out.println("Welcome to Maven World and browser IE");
 				System.setProperty("webdriver.ie.driver",
-						".\\IEDriverServer.exe");
+						 Propert.getProperties("IEServer_path"));
 				DesiredCapabilities capability = DesiredCapabilities
 						.internetExplorer();
 				capability
@@ -126,13 +130,13 @@ public class WebDriverSettings extends EmailReport {
 				e.printStackTrace();
 			}
 
-		case "Op":
+		case "OP":
 			System.out.println("Welcome to Maven World and browser Opera");
-			System.setProperty("webdriver.opera.driver", ".\\operadriver.exe");
+			System.setProperty("webdriver.opera.driver", Propert.getProperties("Opera_path"));
 			OperaOptions opera = new OperaOptions();
 			opera.addArguments("disable-infobars");
 			opera.addArguments("--start-maximized");
-			opera.setBinary("C:\\Program Files (x86)\\Opera\\launcher.exe");
+			opera.setBinary(Propert.getProperties("binery_opera"));
 			driver = new OperaDriver(opera);
 			// WebDriverManager.operadriver().setup();
 			// driver =new OperaDriver();
@@ -141,7 +145,7 @@ public class WebDriverSettings extends EmailReport {
 			break;
 		case "FF":
 			System.out.println("Welcome to Maven World and browser FF");
-			System.setProperty("webdriver.gecko.driver", ".\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", Propert.getProperties("Geckofriver_path"));
 			WebDriverManager.firefoxdriver().setup();
 			System.out.println(WebDriverManager.firefoxdriver().getVersions());
 			driver = new FirefoxDriver();
@@ -150,7 +154,7 @@ public class WebDriverSettings extends EmailReport {
 			break;
 		case "FFF":
 			System.out.println("Welcome to Maven World and browser FF");
-			System.setProperty("webdriver.gecko.driver", ".\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", Propert.getProperties("Geckofriver_path"));
 			WebDriverManager.firefoxdriver().setup();
 			System.out.println(WebDriverManager.firefoxdriver().getVersions());
 			DesiredCapabilities capability = DesiredCapabilities.firefox();
@@ -177,12 +181,11 @@ public class WebDriverSettings extends EmailReport {
 			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 			break;
 		default:
-			System.setProperty("webdriver.chrome.driver", ".\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", Propert.getProperties("Chromewebdriver_path"));
 			DesiredCapabilities capability1 = DesiredCapabilities.chrome();
 			ChromeOptions options2 = new ChromeOptions();
 			options2.addArguments(Arrays.asList("--start-maximized"));
 			capability1.setCapability(ChromeOptions.CAPABILITY, options2);
-			;
 			capability1.setBrowserName("chrome");
 			URL hostURL1 = new URL("http://localhost:4444/wd/hub");
 			driver = new RemoteWebDriver(hostURL1, capability1);
