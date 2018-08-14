@@ -2,28 +2,24 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="38507" started-at="2018-07-13T14:43:36Z" finished-at="2018-07-13T14:44:14Z">
+  <suite name="Default suite" duration-ms="36969" started-at="2018-08-14T14:16:01Z" finished-at="2018-08-14T14:16:38Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="38507" started-at="2018-07-13T14:43:36Z" finished-at="2018-07-13T14:44:14Z">
+    <test name="Default test" duration-ms="36969" started-at="2018-08-14T14:16:01Z" finished-at="2018-08-14T14:16:38Z">
       <class name="betSite.RegistrationTestSuit">
-        <test-method status="PASS" signature="setupClass1()[pri:0, instance:betSite.RegistrationTestSuit@f6c48ac]" name="setupClass1" is-config="true" duration-ms="9444" started-at="2018-07-13T17:43:36Z" finished-at="2018-07-13T17:43:45Z">
+        <test-method status="PASS" signature="setupClass1()[pri:0, instance:betSite.RegistrationTestSuit@6eebc39e]" name="setupClass1" is-config="true" duration-ms="4825" started-at="2018-08-14T17:16:01Z" finished-at="2018-08-14T17:16:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupClass1 -->
-        <test-method status="PASS" signature="LogIn()[pri:0, instance:betSite.RegistrationTestSuit@f6c48ac]" name="LogIn" duration-ms="17339" started-at="2018-07-13T17:43:45Z" finished-at="2018-07-13T17:44:02Z">
+        <test-method status="PASS" signature="LogIn()[pri:0, instance:betSite.RegistrationTestSuit@6eebc39e]" name="LogIn" duration-ms="29976" started-at="2018-08-14T17:16:06Z" finished-at="2018-08-14T17:16:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LogIn -->
-        <test-method status="PASS" signature="IncorrectEmail()[pri:0, instance:betSite.RegistrationTestSuit@f6c48ac]" name="IncorrectEmail" duration-ms="8908" started-at="2018-07-13T17:44:02Z" finished-at="2018-07-13T17:44:11Z">
+        <test-method status="PASS" signature="IncorrectEmail()[pri:0, instance:betSite.RegistrationTestSuit@6eebc39e]" name="IncorrectEmail" duration-ms="2155" started-at="2018-08-14T17:16:36Z" finished-at="2018-08-14T17:16:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- IncorrectEmail -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:betSite.RegistrationTestSuit@f6c48ac]" name="teardown" is-config="true" duration-ms="2803" started-at="2018-07-13T17:44:11Z" finished-at="2018-07-13T17:44:14Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:betSite.RegistrationTestSuit@f6c48ac]" name="tearDown" is-config="true" duration-ms="2138" started-at="2018-07-13T17:44:14Z" finished-at="2018-07-13T17:44:16Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:betSite.RegistrationTestSuit@6eebc39e]" name="tearDown" is-config="true" duration-ms="3521" started-at="2018-08-14T17:16:38Z" finished-at="2018-08-14T17:16:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

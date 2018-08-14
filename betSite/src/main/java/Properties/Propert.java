@@ -8,20 +8,20 @@ import java.io.FileInputStream;
 
 public class Propert {
 	public static final String Path_to_properties = "src/main/config.properties";
-	
-	public static String getProperties(String prop){
+
+	public static String getProperties(String prop) {
 		FileInputStream fileInputStream;
 		java.util.Properties properties = new java.util.Properties();
-		
-		try{
+
+		try {
 			fileInputStream = new FileInputStream(Path_to_properties);
 			properties.load(fileInputStream);
-			return properties.getProperty(prop);			
-		}catch(Exception e){
-			e.printStackTrace();;
+			return properties.getProperty(prop);
+		} catch (Exception e) {
+			e.printStackTrace();
+			;
 		}
-		
-		return null;		
+
+		return null;
 	}
 }
-

@@ -9,21 +9,20 @@ import java.io.IOException;
 
 public class TestData {
 	public static final String PATH_TO_TEST_DATA = "src/main/config.properties";
-	
-	public static String value(String inputvalues){
-		
+
+	public static String value(String inputvalues) {
+
 		FileInputStream fileinputstream;
-		java.util.Properties prop =new java.util.Properties();
-		
-		try{
+		java.util.Properties prop = new java.util.Properties();
+
+		try {
 			fileinputstream = new FileInputStream(PATH_TO_TEST_DATA);
 			prop.load(fileinputstream);
 			return prop.getProperty(inputvalues);
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
 }
-

@@ -7,7 +7,7 @@
         <methods>
           <include name="setupClass1"/>
           <include name="tearDown"/>
-          <include name="teardown"/>
+          <include name="LogIn"/>
           <include name="IncorrectEmail"/>
         </methods>
       </class> <!-- betSite.RegistrationTestSuit -->

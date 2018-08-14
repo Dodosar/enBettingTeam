@@ -20,65 +20,67 @@ import javax.mail.internet.MimeMultipart;
 public class EmailReport {
 	/**
 	 * Send email using java
+	 * 
 	 * @param from
 	 * @param pass
 	 * @param to
 	 * @param subject
 	 * @param body
 	 */
-	protected static void sendPDFReportByGMail(String from, String pass, String to, String subject, String body) {
-        Properties props = System.getProperties();
-        String host = "smtp.gmail.com";
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", from);
-        props.put("mail.smtp.password", pass);
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
+	protected static void sendPDFReportByGMail(String from, String pass,
+			String to, String subject, String body) {
+		Properties props = System.getProperties();
+		String host = "smtp.gmail.com";
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.user", from);
+		props.put("mail.smtp.password", pass);
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.auth", "true");
 
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
+		Session session = Session.getDefaultInstance(props);
+		MimeMessage message = new MimeMessage(session);
 
-        try {
-        	//Set from address
-            message.setFrom(new InternetAddress(from));
-             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-           //Set subject
-            message.setSubject(subject);
-            message.setText(body);
-          
-            BodyPart objMessageBodyPart = new MimeBodyPart();
-            
-            objMessageBodyPart.setText("Please Find The Attached Report File!");
-            
-            Multipart multipart = new MimeMultipart();
+		try {
+			// Set from address
+			message.setFrom(new InternetAddress(from));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(
+					to));
+			// Set subject
+			message.setSubject(subject);
+			message.setText(body);
 
-            multipart.addBodyPart(objMessageBodyPart);
+			BodyPart objMessageBodyPart = new MimeBodyPart();
 
-            objMessageBodyPart = new MimeBodyPart();
+			objMessageBodyPart.setText("Please Find The Attached Report File!");
 
-            //Set path to the pdf report file
-            String filename = System.getProperty("user.dir")+"\\Default test.pdf"; 
-            //Create data source to attach the file in mail
-            DataSource source = new FileDataSource(filename);
-            
-            objMessageBodyPart.setDataHandler(new DataHandler(source));
+			Multipart multipart = new MimeMultipart();
 
-            objMessageBodyPart.setFileName(filename);
+			multipart.addBodyPart(objMessageBodyPart);
 
-            multipart.addBodyPart(objMessageBodyPart);
+			objMessageBodyPart = new MimeBodyPart();
 
-            message.setContent(multipart);
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        }
-        catch (AddressException ae) {
-            ae.printStackTrace();
-        }
-        catch (MessagingException me) {
-            me.printStackTrace();
-        }
-    }
+			// Set path to the pdf report file
+			String filename = System.getProperty("user.dir")
+					+ "\\Default test.pdf";
+			// Create data source to attach the file in mail
+			DataSource source = new FileDataSource(filename);
+
+			objMessageBodyPart.setDataHandler(new DataHandler(source));
+
+			objMessageBodyPart.setFileName(filename);
+
+			multipart.addBodyPart(objMessageBodyPart);
+
+			message.setContent(multipart);
+			Transport transport = session.getTransport("smtp");
+			transport.connect(host, from, pass);
+			transport.sendMessage(message, message.getAllRecipients());
+			transport.close();
+		} catch (AddressException ae) {
+			ae.printStackTrace();
+		} catch (MessagingException me) {
+			me.printStackTrace();
+		}
+	}
 }
