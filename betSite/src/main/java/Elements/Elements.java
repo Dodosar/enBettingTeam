@@ -3,13 +3,22 @@ package Elements;
 import FunctionLibrary.GetTheXpath;
 
 public enum Elements implements GetTheXpath {
-	LOGIN("login", "//button[.='Sign in']"), SINGUP("signup",
-			"//button[.='Sign up']"), EMAIL("email", "//input[@name='email']"), PASSWORD(
-			"password", "//input[@name='password']"), CPASSWORD("cpassword",
-			"//input[@name='confirm']"), CHECKBOX("checkbox",
-			"//input[@type='checkbox']"), POPUPMESSAGE("popup",
-			"/html/body/div[4]/div[1]/div/div/div/div/form/div[1]");
-
+	LOGIN("login", "//button[.='Sign in']"), 
+	SINGUP("signup","//button[.='Sign up']"), 
+	EMAIL("email", "//input[@name='email']"), 
+	PASSWORD("password", "//input[@name='password']"),
+	CPASSWORD("cpassword","//input[@name='confirm']"), 
+	CHECKBOX("checkbox","//input[@type='checkbox']"), 
+	HAVEANACCOUNT("haveaccount","//button[.='Have an account?']"),
+	FB("fb","//*[.='Sign in using social network']//*[@width='13' and @height='22']"),
+	PROFILEICON("profic","//*[contains(concat(' ', @class, ' '), ' l-header-profile ')]//*[contains(concat(' ', @class, ' '), ' bi-icon bi-avatar__icon ')]/*"),
+	//PROFILEICON("profic","//*[contains(concat(' ', @class, ' '), ' bi-avatar bi-avatar--size-sm is-round ')]//*[@viewBox = '0 0 102 116']"),
+	SINGOUT("singout", "//*[contains(concat(' ', @class, ' '), ' l-header-profile__nav ')]//*[contains(concat(' ', @class, ' '), ' t-color-warn ')]"),
+	FBEMIAL("FBemail","//input[@id='email']"),
+	FBPASSWORD("FBpassword","//input[@id='pass']"), 
+	LOGINFB("loginFB","//input[@name='login']");
+	
+	
 	private final String name;
 	private final String xpath;
 

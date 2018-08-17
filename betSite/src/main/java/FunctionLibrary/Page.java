@@ -1,22 +1,26 @@
 package FunctionLibrary;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.File;
+
 
 
 //import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import betSite.WebDriverSettings;
 import Elements.Elements;
 
-public abstract class Page implements SingUpPage {
+public abstract class Page {
 
 	protected static WebDriver driver;
 	protected String url = "";
@@ -31,7 +35,7 @@ public abstract class Page implements SingUpPage {
 	}
 
 	public Page open() {
-		WebDriverSettings.driver.get(url);
+		driver.get(url);
 		pause(1);
 		System.out.println("open page " + url);
 		// logger.log(Level.FINER, "finer");
@@ -105,17 +109,43 @@ public abstract class Page implements SingUpPage {
 	public Page clickOn(String element) {
 		getElement(element).click();
 		pause(1);
+		// isExistPng();
 		System.out.println("Click on element " + element);
 		return this;
 
 	}
 
-	public Page WaitUntilAndClick(String xpath, String value) {
+	public Page WaitUntilAndClick(String xpath) {
 		new WebDriverWait(driver, 5).until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath(String
-						.format(xpath, value)))).click();
+				ExpectedConditions.visibilityOfElementLocated(By.xpath(getXpath(xpath))));
 		return this;
 
 	}
 
+	protected boolean isAttributePresent(String xpath, String attribute) {
+		Boolean result = false;
+		try {
+			String value = getElement(xpath).getAttribute(attribute);
+			if (value != null) {
+				System.out.println("Attribute is present "
+						+ attribute.toUpperCase());
+				result = true;
+			}
+		} catch (Exception e) {
+			isExistPng();
+		}
+		return result;
+
+	}
+
+	public void ClickOnInvisiableElement(String element) {
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click;", getElement(element));
+	}
+	
+	public void InVisiableElement(String element,String invElement){
+		Actions action = new Actions(driver);
+		action.moveToElement(getElement(element)).moveToElement(getElement(invElement)).pause(2).click().build().perform();
+	}
+	
 }

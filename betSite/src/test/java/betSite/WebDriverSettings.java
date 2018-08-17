@@ -11,9 +11,6 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-
-
-
 //import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,15 +23,16 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
+//import org.testng.annotations.AfterSuite;
+//import org.testng.annotations.AfterTest;
 //import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 import Properties.Propert;
 
 public class WebDriverSettings extends EmailReport {
-	public static WebDriver driver;	
+	public static WebDriver driver;
+	public static String browser;
 
 	/*
 	 * @BeforeClass public static void setupClass() {
@@ -51,7 +49,7 @@ public class WebDriverSettings extends EmailReport {
 	public static void setupClass1() throws Exception {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader reader = new BufferedReader(isr);
-		String browser = null;
+		browser = null;
 		/*
 		 * //Check if parameter passed from TestNG is 'firefox'
 		 * if(browser.equalsIgnoreCase("firefox")){ //create firefox instance
@@ -68,27 +66,31 @@ public class WebDriverSettings extends EmailReport {
 		selectBrowser(browser);
 	}
 
-	/*@AfterTest(alwaysRun = true)
-	public void teardown() {
-			// driver.get("http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer");
-			driver.quit();
-			driver.close();
-	}*/
+	/*
+	 * @AfterTest(alwaysRun = true) public void teardown() { // driver.get(
+	 * "http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer"
+	 * ); driver.quit(); driver.close(); }
+	 */
 
-	@AfterSuite(alwaysRun = true)
+	/*@AfterSuite(alwaysRun = true)
 	public void tearDown() throws IOException {
 		sendPDFReportByGMail("tyudm@anzer.com", "Lbvf650065",
 				"tiurindmitry1989@gmail.com", "PDF Report",
 				"Test how will sent PDF file by email");
-		if (driver == null) {			
-				Runtime.getRuntime().exec("taskkill /f /im opera.exe");
-			return;
+		if (driver == null) {
+			CheckBrowserOpera("OP");
+						return;
 		}
-		Runtime.getRuntime().exec("taskkill /f /im opera.exe");
+		CheckBrowserOpera("OP");
 		driver.quit();
-		driver = null;
-	}
+				driver = null;
+	}*/
 
+	/*private void CheckBrowserOpera(String browser) throws IOException {
+		if (browser == "OP") {
+			Runtime.getRuntime().exec("taskkill /f /im opera.exe");
+		}
+	}*/
 
 	public static void selectBrowser(String browser)
 			throws MalformedURLException {
@@ -96,6 +98,7 @@ public class WebDriverSettings extends EmailReport {
 		case "CH":
 			System.setProperty("webdriver.chrome.driver",
 					Propert.getProperties("Chromewebdriver_path"));
+			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--start-maximized");
@@ -145,28 +148,27 @@ public class WebDriverSettings extends EmailReport {
 			driver = new OperaDriver(opera);
 			// WebDriverManager.operadriver().setup();
 			// driver =new OperaDriver();
-			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+			//driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 			break;
 		case "FF":
 			System.out.println("Welcome to Maven World and browser FF");
 			System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
-			WebDriverManager.firefoxdriver().setup();
-			System.out.println(WebDriverManager.firefoxdriver().getVersions());
+			//WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
 			break;
 		case "FFF":
 			System.out.println("Welcome to Maven World and browser FF");
 			System.setProperty("webdriver.gecko.driver",
-					Propert.getProperties("Geckofriver_path"));
-			WebDriverManager.firefoxdriver().setup();
+			Propert.getProperties("Geckofriver_path"));
 			System.out.println(WebDriverManager.firefoxdriver().getVersions());
 			DesiredCapabilities capability = DesiredCapabilities.firefox();
 			FirefoxOptions options1 = new FirefoxOptions();
 			options1.addArguments("--start-maximized");
-			capability.setCapability(ChromeOptions.CAPABILITY, options1);
+			capability.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options1);
 			;
 			// URL hostURL = new URL("http://localhost:4444/wd/hub");
 			// driver = new RemoteWebDriver(hostURL,capability);
@@ -177,14 +179,14 @@ public class WebDriverSettings extends EmailReport {
 		case "HT":
 			System.out.println("Welcome to Maven World and browser HTMLUnit");
 			driver = new HtmlUnitDriver(true);
-			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+			/*driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);*/
 			break;
 		case "Ph":
 			System.out.println("Welcome to Maven World and browser Phantom");
 			WebDriverManager.phantomjs().useMirror().setup();
-			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+			/*driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);*/
 			break;
 		default:
 			System.setProperty("webdriver.chrome.driver",

@@ -6,9 +6,8 @@
       <class name="betSite.RegistrationTestSuit">
         <methods>
           <include name="setupClass1"/>
-          <include name="tearDown"/>
+          <include name="SingIn"/>
           <include name="LogIn"/>
-          <include name="IncorrectEmail"/>
         </methods>
       </class> <!-- betSite.RegistrationTestSuit -->
     </classes>
