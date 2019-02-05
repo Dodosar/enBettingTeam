@@ -1,10 +1,8 @@
 package FunctionLibrary;
 
-import static org.testng.Assert.assertEquals;
+
 
 import java.io.File;
-
-
 
 //import java.util.List;
 import org.apache.commons.io.FileUtils;
@@ -20,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Elements.Elements;
 
-public abstract class Page {
+public abstract class Page implements typeValue, selectChechbox {
 
 	protected static WebDriver driver;
 	protected String url = "";
@@ -38,8 +36,6 @@ public abstract class Page {
 		driver.get(url);
 		pause(1);
 		System.out.println("open page " + url);
-		// logger.log(Level.FINER, "finer");
-		// logger.log(Level.INFO, "Web");
 		return this;
 	}
 
@@ -116,8 +112,8 @@ public abstract class Page {
 	}
 
 	public Page WaitUntilAndClick(String xpath) {
-		new WebDriverWait(driver, 5).until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath(getXpath(xpath))));
+		new WebDriverWait(driver, 5).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath(getXpath(xpath))));
 		return this;
 
 	}
@@ -139,13 +135,39 @@ public abstract class Page {
 	}
 
 	public void ClickOnInvisiableElement(String element) {
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click;", getElement(element));
 	}
-	
-	public void InVisiableElement(String element,String invElement){
-		Actions action = new Actions(driver);
-		action.moveToElement(getElement(element)).moveToElement(getElement(invElement)).pause(2).click().build().perform();
+
+	@SuppressWarnings("deprecation")
+	public void InVisiableElement(String element, String invElement) {
+		pause(2);
+		try {
+			Actions action = new Actions(driver);
+			action.moveToElement(getElement(element))
+					.moveToElement(getElement(invElement)).click()
+					.build().perform();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
+
+	public Page typeValueInRegistrationForm(String element,
+			String textforelements, String Attribute) {
+		isAttributePresent(element, Attribute);
+		getElement(element).clear();
+		getElement(element).sendKeys(textforelements);
+		isExistPng();
+		return this;
+	}
+
+	public Page SelectCheckBoxInRegistrationForm(String element) {
+		if (getElement(element).isSelected()) {
+			System.out.println("Check-box is Toggled on");
+			return this;
+		} else {
+			System.out.println("Check-box is not Toggled off");
+			return clickOn(element);
+		}
+	}
 }

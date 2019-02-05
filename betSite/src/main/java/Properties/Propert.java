@@ -7,7 +7,7 @@ import java.io.FileInputStream;
  */
 
 public class Propert {
-	public static final String Path_to_properties = "src/main/config.properties";
+	public static final String Path_to_properties = "C:/Users/tyudm/git/enBettingTeam/betSite/src/main/resources/config.properties";
 
 	public static String getProperties(String prop) {
 		FileInputStream fileInputStream;
@@ -18,7 +18,7 @@ public class Propert {
 			properties.load(fileInputStream);
 			return properties.getProperty(prop);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			;
 		}
 

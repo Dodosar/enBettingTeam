@@ -1,10 +1,11 @@
 package betSite;
 
-import junit.framework.Assert;
-
+import org.apache.log4j.Logger;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertNotNull;
+import FunctionLibrary.MainPage;
 import Properties.TestData;
 
 /*create test by Dima Tiurin*/
@@ -12,22 +13,32 @@ import Properties.TestData;
 public class RegistrationTestSuit extends WebDriverSettings {
 	private BetSite objBettingSite;
 	private String ParentWindow;
-
+	//Logger log = Logger.getLogger(System.getProperty("LOG4J"));
+	Logger log = Logger.getLogger("devpinoyLogger");
 	@Test(priority = 0)
-	public void LogIn() {
-
+	private void LogIn() {
 		// Open the web site, check the title and got to sing up window
 		objBettingSite = new BetSite(driver);
+		org.apache.log4j.BasicConfigurator.configure();
 		System.out.println("Step 1: Check Title on Main Page");
-		objBettingSite.mainPage().open();
+		/* можно использывать этот способ обращения к обьекту*/
+		PageFactory.initElements(driver, MainPage.class).open();
+		log.debug("opening webiste");
+		log.info("test info");
 					ParentWindow = driver.getWindowHandle();
-					System.out.println(ParentWindow);
 		objBettingSite.mainPage().pageShouldBe(objBettingSite.mainPage()).and().clickOn("login")
 				.then().clickOn("signup").then();
+		log.debug("opening singup");
+		log.fatal("This is a FATAL message.");
+		log.error("This is an ERROR message.");
+		log.warn("This is a WARN message.");
+		log.info("This is an INFO message.");
+		log.debug("This is a DEBUG message.");
+		log.trace("This is a TRACE message.");
 	}
-
-	/*@Test(priority = 1)
-	public void IncorrectEmail() throws Exception {
+/*
+	@Test(priority = 1)
+	private void IncorrectEmail() throws Exception {
 		// test sing up form for registration. And assert message when it is
 		// incorrect
 		objBettingSite
@@ -45,7 +56,7 @@ public class RegistrationTestSuit extends WebDriverSettings {
 	}
 	
 	@Test(priority = 2)
-	public void IncorrectPassword() throws Exception {
+	private void IncorrectPassword() throws Exception {
 		objBettingSite.
 						mainPage()
 						.typeValueInRegistrationForm("email", TestData.value("email"),"email")
@@ -59,7 +70,7 @@ public class RegistrationTestSuit extends WebDriverSettings {
 	}
 	
 	@Test(priority = 3)
-	public void IncorrectConfirm() throws Exception {
+	private void IncorrectConfirm() throws Exception {
 		objBettingSite.
 						mainPage()
 						.typeValueInRegistrationForm("email", TestData.value("email"),"email")
@@ -70,12 +81,13 @@ public class RegistrationTestSuit extends WebDriverSettings {
 						.typeValueInRegistrationForm("cpassword",
 								TestData.value("incorrectconfirm"),"password").then()
 						.SelectCheckBoxInRegistrationForm("checkbox").clickOn("signup").then();
-	}*/
-	
+	}
+*/	
 	@Test(priority = 4)
-	public void SingIn() throws Exception {
+	private void SingIn() throws Exception {
 		objBettingSite.mainPage().clickOn("haveaccount")
 			.then().clickOn("fb");
+		log.debug("opening fb");
 		for(String Subwindow: driver.getWindowHandles()){
 			driver.switchTo().window(Subwindow);
 			}
@@ -85,9 +97,11 @@ public class RegistrationTestSuit extends WebDriverSettings {
 						.typeValueInRegistrationForm("FBpassword", TestData.value("fbpassword"), "pass")
 						.then()
 						.clickOn("loginFB");
+		log.debug("sing up in fb");
 		assertNotNull(ParentWindow);
 		driver.switchTo().window(ParentWindow);
 		objBettingSite.mainPage().InVisiableElement("profic", "singout");	
+		log.debug("sing out from fb");
 		//objBettingSite.mainPage().ClickOnInvisiableElement("singout");				
 	}
 }

@@ -2,6 +2,7 @@ package betSite;
 
 import org.openqa.selenium.WebDriver;
 
+
 import FunctionLibrary.FB;
 import FunctionLibrary.MainPage;
 
@@ -15,6 +16,7 @@ public class BetSite {
 	public MainPage mainPage() {
 		return new MainPage(driver);
 	}
+
 	
 	public FB FBLogInPage() {
 		return new FB(driver);

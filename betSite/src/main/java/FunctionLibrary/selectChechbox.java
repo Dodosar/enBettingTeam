@@ -7,7 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
  */
 
 public interface selectChechbox {
-	public Page SelectCheckBoxInRegistrationForm(String element) throws NoSuchElementException;
+	public Object SelectCheckBoxInRegistrationForm(String element) throws NoSuchElementException;
 
 }
 

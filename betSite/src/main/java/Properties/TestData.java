@@ -8,7 +8,7 @@ import java.io.IOException;
  */
 
 public class TestData {
-	public static final String PATH_TO_TEST_DATA = "src/main/config.properties";
+	public static final String PATH_TO_TEST_DATA = "C:/Users/tyudm/git/enBettingTeam/betSite/src/main/resources/config.properties";
 
 	public static String value(String inputvalues) {
 

@@ -23,9 +23,9 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-//import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterSuite;
 //import org.testng.annotations.AfterTest;
-//import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.BeforeTest;
 
 import Properties.Propert;
@@ -72,29 +72,29 @@ public class WebDriverSettings extends EmailReport {
 	 * ); driver.quit(); driver.close(); }
 	 */
 
-	/*@AfterSuite(alwaysRun = true)
+	@AfterSuite(alwaysRun = true)
 	public void tearDown() throws IOException {
 		sendPDFReportByGMail("tyudm@anzer.com", "Lbvf650065",
 				"tiurindmitry1989@gmail.com", "PDF Report",
-				"Test how will sent PDF file by email");
+				"Dima Tiurin");
 		if (driver == null) {
 			CheckBrowserOpera("OP");
-						return;
+			return;
 		}
 		CheckBrowserOpera("OP");
 		driver.quit();
-				driver = null;
-	}*/
+		driver = null;
+	}
 
-	/*private void CheckBrowserOpera(String browser) throws IOException {
+	private void CheckBrowserOpera(String browser) throws IOException {
 		if (browser == "OP") {
 			Runtime.getRuntime().exec("taskkill /f /im opera.exe");
 		}
-	}*/
+	}
 
 	public static void selectBrowser(String browser)
 			throws MalformedURLException {
-		switch (browser) {
+		switch (browser.toUpperCase()) {
 		case "CH":
 			System.setProperty("webdriver.chrome.driver",
 					Propert.getProperties("Chromewebdriver_path"));
@@ -124,9 +124,9 @@ public class WebDriverSettings extends EmailReport {
 				capability.setCapability(
 						InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
 
-				URL hostURL = new URL("http://localhost:4444/wd/hub");
-				driver = new RemoteWebDriver(hostURL, capability);
-				// driver = new InternetExplorerDriver();
+				// URL hostURL = new URL("http://localhost:4444/wd/hub");
+				// driver = new RemoteWebDriver(hostURL, capability);
+				driver = new InternetExplorerDriver(capability);
 				driver.manage().timeouts()
 						.pageLoadTimeout(30, TimeUnit.SECONDS);
 				driver.manage().timeouts()
@@ -148,13 +148,13 @@ public class WebDriverSettings extends EmailReport {
 			driver = new OperaDriver(opera);
 			// WebDriverManager.operadriver().setup();
 			// driver =new OperaDriver();
-			//driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+			// driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 			break;
 		case "FF":
 			System.out.println("Welcome to Maven World and browser FF");
 			System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
-			//WebDriverManager.firefoxdriver().setup();
+			// WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
@@ -163,7 +163,7 @@ public class WebDriverSettings extends EmailReport {
 		case "FFF":
 			System.out.println("Welcome to Maven World and browser FF");
 			System.setProperty("webdriver.gecko.driver",
-			Propert.getProperties("Geckofriver_path"));
+					Propert.getProperties("Geckofriver_path"));
 			System.out.println(WebDriverManager.firefoxdriver().getVersions());
 			DesiredCapabilities capability = DesiredCapabilities.firefox();
 			FirefoxOptions options1 = new FirefoxOptions();
@@ -179,14 +179,20 @@ public class WebDriverSettings extends EmailReport {
 		case "HT":
 			System.out.println("Welcome to Maven World and browser HTMLUnit");
 			driver = new HtmlUnitDriver(true);
-			/*driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);*/
+			/*
+			 * driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			 * driver.manage().timeouts().setScriptTimeout(30,
+			 * TimeUnit.SECONDS);
+			 */
 			break;
 		case "Ph":
 			System.out.println("Welcome to Maven World and browser Phantom");
 			WebDriverManager.phantomjs().useMirror().setup();
-			/*driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);*/
+			/*
+			 * driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+			 * driver.manage().timeouts().setScriptTimeout(60,
+			 * TimeUnit.SECONDS);
+			 */
 			break;
 		default:
 			System.setProperty("webdriver.chrome.driver",

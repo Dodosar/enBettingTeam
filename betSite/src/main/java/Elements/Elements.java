@@ -10,13 +10,16 @@ public enum Elements implements GetTheXpath {
 	CPASSWORD("cpassword","//input[@name='confirm']"), 
 	CHECKBOX("checkbox","//input[@type='checkbox']"), 
 	HAVEANACCOUNT("haveaccount","//button[.='Have an account?']"),
-	FB("fb","//*[.='Sign in using social network']//*[@width='13' and @height='22']"),
-	PROFILEICON("profic","//*[contains(concat(' ', @class, ' '), ' l-header-profile ')]//*[contains(concat(' ', @class, ' '), ' bi-icon bi-avatar__icon ')]/*"),
+	FB("fb","//*[.='Sign in using social network']//*[@width='13px' and @height='22px']"),
+	PROFILEICON("profic", "//div[@class='l-header-profile']//span[@class='ui-avatar__img default']"),
+			//"//*[contains(concat(' ', @class, ' '), ' l-header-profile ')]"
+			//+ "//*[contains(concat(' ', @class, ' '), ' bi-icon bi-avatar__icon ')]/*"),
 	//PROFILEICON("profic","//*[contains(concat(' ', @class, ' '), ' bi-avatar bi-avatar--size-sm is-round ')]//*[@viewBox = '0 0 102 116']"),
-	SINGOUT("singout", "//*[contains(concat(' ', @class, ' '), ' l-header-profile__nav ')]//*[contains(concat(' ', @class, ' '), ' t-color-warn ')]"),
+	SINGOUT("singout", "//nav[@class='l-header-profile__nav']//span[.='Sign out']"),
 	FBEMIAL("FBemail","//input[@id='email']"),
 	FBPASSWORD("FBpassword","//input[@id='pass']"), 
-	LOGINFB("loginFB","//input[@name='login']");
+	LOGINFB("loginFB","//input[@name='login']"),
+	MATCHESPAGE("matchesPage","//a[contains(text(),'Matches') and contains(concat(' ', @class, ' '), ' l-header-menu__link ')]");
 	
 	
 	private final String name;

@@ -15,7 +15,7 @@ public class FB extends Page implements typeValue{
 	}
 
 	@Override
-	public FB typeValueInRegistrationForm(String element,
+	public final FB typeValueInRegistrationForm(String element,
 			String textforelements,String Attribute) {
 		isAttributePresent(element, Attribute);
 		getElement(element).clear();
@@ -23,6 +23,8 @@ public class FB extends Page implements typeValue{
 		isExistPng();
 		return this;
 	}
+
+
 	
 
 }
