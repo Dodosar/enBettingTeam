@@ -99,6 +99,9 @@ public class RegistrationTestSuit extends WebDriverSettings {
 						.clickOn("loginFB");
 		log.debug("sing up in fb");
 		assertNotNull(ParentWindow);
+	}
+	@Test(priority = 5)
+	public void SingOut(){
 		driver.switchTo().window(ParentWindow);
 		objBettingSite.mainPage().InVisiableElement("profic", "singout");	
 		log.debug("sing out from fb");

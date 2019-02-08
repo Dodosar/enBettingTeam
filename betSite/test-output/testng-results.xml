@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="26274" started-at="2019-02-05T11:56:30Z" finished-at="2019-02-05T11:56:56Z">
+  <suite name="Default suite" duration-ms="25262" started-at="2019-02-08T14:09:23Z" finished-at="2019-02-08T14:09:48Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="26274" started-at="2019-02-05T11:56:30Z" finished-at="2019-02-05T11:56:56Z">
+    <test name="Default test" duration-ms="25262" started-at="2019-02-08T14:09:23Z" finished-at="2019-02-08T14:09:48Z">
       <class name="betSite.RegistrationTestSuit">
-        <test-method status="PASS" signature="setupClass1()[pri:0, instance:betSite.RegistrationTestSuit@6e0e048a]" name="setupClass1" is-config="true" duration-ms="10032" started-at="2019-02-05T13:56:30Z" finished-at="2019-02-05T13:56:40Z">
+        <test-method status="PASS" signature="setupClass1()[pri:0, instance:betSite.RegistrationTestSuit@65e2dbf3]" name="setupClass1" is-config="true" duration-ms="7850" started-at="2019-02-08T16:09:23Z" finished-at="2019-02-08T16:09:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupClass1 -->
-        <test-method status="PASS" signature="LogIn()[pri:0, instance:betSite.RegistrationTestSuit@6e0e048a]" name="LogIn" duration-ms="7355" started-at="2019-02-05T13:56:40Z" finished-at="2019-02-05T13:56:47Z">
+        <test-method status="PASS" signature="LogIn()[pri:0, instance:betSite.RegistrationTestSuit@65e2dbf3]" name="LogIn" duration-ms="7949" started-at="2019-02-08T16:09:30Z" finished-at="2019-02-08T16:09:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LogIn -->
-        <test-method status="PASS" signature="SingIn()[pri:0, instance:betSite.RegistrationTestSuit@6e0e048a]" name="SingIn" duration-ms="8874" started-at="2019-02-05T13:56:47Z" finished-at="2019-02-05T13:56:56Z">
+        <test-method status="PASS" signature="SingIn()[pri:0, instance:betSite.RegistrationTestSuit@65e2dbf3]" name="SingIn" duration-ms="7147" started-at="2019-02-08T16:09:38Z" finished-at="2019-02-08T16:09:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SingIn -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:betSite.RegistrationTestSuit@6e0e048a]" name="tearDown" is-config="true" duration-ms="3942" started-at="2019-02-05T13:56:56Z" finished-at="2019-02-05T13:57:00Z">
+        <test-method status="PASS" signature="SingOut()[pri:0, instance:betSite.RegistrationTestSuit@65e2dbf3]" name="SingOut" duration-ms="2299" started-at="2019-02-08T16:09:46Z" finished-at="2019-02-08T16:09:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SingOut -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:betSite.RegistrationTestSuit@65e2dbf3]" name="tearDown" is-config="true" duration-ms="4120" started-at="2019-02-08T16:09:48Z" finished-at="2019-02-08T16:09:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

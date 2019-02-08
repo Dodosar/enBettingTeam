@@ -1,11 +1,11 @@
-13:56:45,266 DEBUG devpinoyLogger<strong>{1}</strong>:26 - opening webiste
-13:56:45,275  INFO devpinoyLogger<strong>{1}</strong>:27 - test info
-13:56:47,654 DEBUG devpinoyLogger<strong>{1}</strong>:31 - opening singup
-13:56:47,655 FATAL devpinoyLogger<strong>{1}</strong>:32 - This is a FATAL message.
-13:56:47,656 ERROR devpinoyLogger<strong>{1}</strong>:33 - This is an ERROR message.
-13:56:47,657  WARN devpinoyLogger<strong>{1}</strong>:34 - This is a WARN message.
-13:56:47,658  INFO devpinoyLogger<strong>{1}</strong>:35 - This is an INFO message.
-13:56:47,659 DEBUG devpinoyLogger<strong>{1}</strong>:36 - This is a DEBUG message.
-13:56:49,984 DEBUG devpinoyLogger<strong>{1}</strong>:90 - opening fb
-13:56:54,242 DEBUG devpinoyLogger<strong>{1}</strong>:100 - sing up in fb
-13:56:56,536 DEBUG devpinoyLogger<strong>{1}</strong>:104 - sing out from fb
+16:09:36,518 DEBUG devpinoyLogger<strong>{1}</strong>:26 - opening webiste
+16:09:36,526  INFO devpinoyLogger<strong>{1}</strong>:27 - test info
+16:09:38,885 DEBUG devpinoyLogger<strong>{1}</strong>:31 - opening singup
+16:09:38,886 FATAL devpinoyLogger<strong>{1}</strong>:32 - This is a FATAL message.
+16:09:38,887 ERROR devpinoyLogger<strong>{1}</strong>:33 - This is an ERROR message.
+16:09:38,888  WARN devpinoyLogger<strong>{1}</strong>:34 - This is a WARN message.
+16:09:38,888  INFO devpinoyLogger<strong>{1}</strong>:35 - This is an INFO message.
+16:09:38,889 DEBUG devpinoyLogger<strong>{1}</strong>:36 - This is a DEBUG message.
+16:09:41,204 DEBUG devpinoyLogger<strong>{1}</strong>:90 - opening fb
+16:09:46,039 DEBUG devpinoyLogger<strong>{1}</strong>:100 - sing up in fb
+16:09:48,341 DEBUG devpinoyLogger<strong>{1}</strong>:107 - sing out from fb
