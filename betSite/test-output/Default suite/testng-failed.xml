@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="betSite.RegistrationTestSuit">
+      <class name="betSite.PutInBet">
         <methods>
           <include name="setupClass1"/>
           <include name="tearDown"/>
-          <include name="SingIn"/>
+          <include name="countMatches"/>
         </methods>
-      </class> <!-- betSite.RegistrationTestSuit -->
+      </class> <!-- betSite.PutInBet -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

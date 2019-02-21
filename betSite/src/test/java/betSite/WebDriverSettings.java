@@ -92,8 +92,8 @@ public class WebDriverSettings extends EmailReport {
 		}
 	}
 
-	public static void selectBrowser(String browser)
-			throws MalformedURLException {
+	public static WebDriver selectBrowser(String browser) throws MalformedURLException {
+		if (driver == null) {
 		switch (browser.toUpperCase()) {
 		case "CH":
 			System.setProperty("webdriver.chrome.driver",
@@ -106,8 +106,8 @@ public class WebDriverSettings extends EmailReport {
 			options.addArguments("--disable-extenstions");
 			driver = new ChromeDriver(options);
 			System.out.println("Welcome to Maven World and browser CH");
-			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+			driver.manage().timeouts().setScriptTimeout(120, TimeUnit.SECONDS);
 			// driver.manage().window().maximize();
 			break;
 		case "IE":
@@ -151,7 +151,7 @@ public class WebDriverSettings extends EmailReport {
 			// driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 			break;
-		case "FF":
+		/*case "FF":
 			System.out.println("Welcome to Maven World and browser FF");
 			System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 			// WebDriverManager.firefoxdriver().setup();
@@ -159,7 +159,7 @@ public class WebDriverSettings extends EmailReport {
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
-			break;
+			break;*/
 		case "FFF":
 			System.out.println("Welcome to Maven World and browser FF");
 			System.setProperty("webdriver.gecko.driver",
@@ -210,6 +210,7 @@ public class WebDriverSettings extends EmailReport {
 			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 			break;
 		}
+		}
+	return driver;	
 	}
-
 }

@@ -3,6 +3,13 @@ package FunctionLibrary;
 
 
 import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+
+
 
 //import java.util.List;
 import org.apache.commons.io.FileUtils;
@@ -19,6 +26,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Elements.Elements;
 
 public abstract class Page implements typeValue, selectChechbox {
+	
+	HttpURLConnection connection = null;
 
 	protected static WebDriver driver;
 	protected String url = "";
@@ -60,13 +69,30 @@ public abstract class Page implements typeValue, selectChechbox {
 		return this;
 	}
 
-	public Page pageShouldBe(PageSingUp expectedPage) {
+	public Page pageShouldBe(Page expectedPage) throws MalformedURLException, IOException {
 		if (driver.getCurrentUrl().equals(expectedPage.getURL())) {
 			System.out.println("The page " + expectedPage.getURL()
 					+ " was loaded");
+		connectHttp(expectedPage);
 			return expectedPage;
 		}
 		throw new RuntimeException("Cannot load page " + expectedPage.getURL());
+	}
+
+	private void connectHttp(Page expectedPage) throws IOException,
+			MalformedURLException, ProtocolException {
+		connection = (HttpURLConnection) new URL(expectedPage.getURL()).openConnection();
+		
+		connection.setRequestMethod("GET");
+		connection.setUseCaches(false);
+		connection.setConnectTimeout(1000);
+		connection.setReadTimeout(1000);
+		
+		connection.connect();
+		
+		System.out.println(connection.getResponseMessage() + ": " + connection.getResponseCode() );
+		
+		connection.disconnect();
 	}
 
 	protected void pause(int i) {
@@ -139,7 +165,6 @@ public abstract class Page implements typeValue, selectChechbox {
 		executor.executeScript("arguments[0].click;", getElement(element));
 	}
 
-	@SuppressWarnings("deprecation")
 	public void InVisiableElement(String element, String invElement) {
 		pause(2);
 		try {

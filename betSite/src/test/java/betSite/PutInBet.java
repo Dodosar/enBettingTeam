@@ -17,7 +17,7 @@ public class PutInBet extends WebDriverSettings{
 		org.apache.log4j.BasicConfigurator.configure();
 		System.out.println("Step 1: Check Title on Matches Page");
 		objBettingSite
-					.mainPage().clickOn("matchesPage");
+					.mainPage().open().clickOn("matchesPage");
 	}
 }
 

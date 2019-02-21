@@ -19,7 +19,7 @@ public enum Elements implements GetTheXpath {
 	FBEMIAL("FBemail","//input[@id='email']"),
 	FBPASSWORD("FBpassword","//input[@id='pass']"), 
 	LOGINFB("loginFB","//input[@name='login']"),
-	MATCHESPAGE("matchesPage","//a[contains(text(),'Matches') and contains(concat(' ', @class, ' '), ' l-header-menu__link ')]");
+	MATCHESPAGE("matchesPage","//a[text()='Matches' and @class='l-header-menu__link']");
 	
 	
 	private final String name;

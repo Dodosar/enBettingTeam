@@ -1,5 +1,7 @@
 package betSite;
 
+
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
@@ -16,7 +18,7 @@ public class RegistrationTestSuit extends WebDriverSettings {
 	//Logger log = Logger.getLogger(System.getProperty("LOG4J"));
 	Logger log = Logger.getLogger("devpinoyLogger");
 	@Test(priority = 0)
-	private void LogIn() {
+	private void LogIn() throws Exception {
 		// Open the web site, check the title and got to sing up window
 		objBettingSite = new BetSite(driver);
 		org.apache.log4j.BasicConfigurator.configure();
@@ -25,7 +27,7 @@ public class RegistrationTestSuit extends WebDriverSettings {
 		PageFactory.initElements(driver, MainPage.class).open();
 		log.debug("opening webiste");
 		log.info("test info");
-					ParentWindow = driver.getWindowHandle();
+		ParentWindow = driver.getWindowHandle();
 		objBettingSite.mainPage().pageShouldBe(objBettingSite.mainPage()).and().clickOn("login")
 				.then().clickOn("signup").then();
 		log.debug("opening singup");
@@ -101,9 +103,9 @@ public class RegistrationTestSuit extends WebDriverSettings {
 		assertNotNull(ParentWindow);
 	}
 	@Test(priority = 5)
-	public void SingOut(){
+	public void SingOut() throws Exception{
 		driver.switchTo().window(ParentWindow);
-		objBettingSite.mainPage().InVisiableElement("profic", "singout");	
+		objBettingSite.mainPage().pageShouldBe(objBettingSite.mainPage()).InVisiableElement("profic", "singout");	
 		log.debug("sing out from fb");
 		//objBettingSite.mainPage().ClickOnInvisiableElement("singout");				
 	}

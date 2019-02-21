@@ -1,5 +1,16 @@
+FunctionLibrary\FB.class
+FunctionLibrary\Page.class
+Properties\Propert.class
 betSite\WebDriverSettings.class
+FunctionLibrary\selectChechbox.class
+Properties\TestData.class
 betSite\BetSite.class
+Elements\Elements.class
+FunctionLibrary\GetTheXpath.class
 betSite\EmailReport.class
+FunctionLibrary\PageSingUp.class
+FunctionLibrary\typeValue.class
 betSite\PutInBet.class
 betSite\RegistrationTestSuit.class
+FunctionLibrary\checkPopUpmessage.class
+FunctionLibrary\MainPage.class
