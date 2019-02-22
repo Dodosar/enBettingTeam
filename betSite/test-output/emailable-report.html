@@ -31,62 +31,60 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">1</td><td class="numi">1</td><td class="numi">0</td><td class="numi_attn">3</td><td class="numi">13.5 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">1</td><td class="numi">1</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">104.2 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
-<tr><th colspan="4">Test &#8212; failed</th></tr>
-<tr class="failedodd"><td rowspan="3">betSite.RegistrationTestSuit</td><td><a href="#m1"><b>LogIn</b>  </a></td><td class="numi">1</td><td>1550766507206</td><td class="numi">6975</td></tr><tr class="failedodd"><td><a href="#m2"><b>SingIn</b>  </a></td><td class="numi">1</td><td>1550766514153</td><td class="numi">76</td></tr><tr class="failedodd"><td><a href="#m3"><b>SingOut</b>  </a></td><td class="numi">1</td><td>1550766514183</td><td class="numi">46</td></tr>
-<tr><th colspan="4">Test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="1">betSite.PutInBet</td><td><a href="#m4"><b>countMatches</b>  </a></td><td class="numi">1</td><td>1550766507206</td><td class="numi">6945</td></tr>
+<tr><th colspan="4">Default test &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="1">betSite.PutInBet</td><td><a href="#m1"><b>writeMesssage</b>  </a></td><td class="numi">1</td><td>1550855054735</td><td class="numi">30</td></tr>
+<tr><th colspan="4">Default test &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="1">betSite.PutInBet</td><td><a href="#m2"><b>countMatches</b>  </a></td><td class="numi">1</td><td>1550854956531</td><td class="numi">98203</td></tr>
 </table>
-<h1>Test</h1>
-<h2 id="m1">betSite.RegistrationTestSuit:SingOut</h2>
+<h1>Default test</h1>
+<h2 id="m1">betSite.PutInBet:writeMesssage</h2>
 <div style="padding-left:3em">
-<p>Cannot load page https://betting.team/en</p>
-FunctionLibrary.Page.pageShouldBe(Page.java:79)
-<br/>at betSite.RegistrationTestSuit.SingOut(RegistrationTestSuit.java:108)
-<br/>14 lines not shown
+<p>org/openqa/selenium/WrapsDriver</p>
+java.lang.ClassLoader.defineClass1(Native Method)
+<br/>at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+<br/>at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+<br/>at java.net.URLClassLoader.defineClass(URLClassLoader.java:467)
+<br/>at java.net.URLClassLoader.access$100(URLClassLoader.java:73)
+<br/>at java.net.URLClassLoader$1.run(URLClassLoader.java:368)
+<br/>at java.net.URLClassLoader$1.run(URLClassLoader.java:362)
+<br/>at java.security.AccessController.doPrivileged(Native Method)
+<br/>at java.net.URLClassLoader.findClass(URLClassLoader.java:361)
+<br/>at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+<br/>at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:335)
+<br/>at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+<br/>at com.codeborne.selenide.impl.ElementFinder.wrap(ElementFinder.java:36)
+<br/>at com.codeborne.selenide.SelenideDriver.find(SelenideDriver.java:209)
+<br/>at com.codeborne.selenide.Selenide.$(Selenide.java:250)
+<br/>at betSite.PutInBet.writeMesssage(PutInBet.java:28)
+<br/>25 lines not shown
+<p>Caused by org.openqa.selenium.WrapsDriver</p>
+java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+<br/>at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+<br/>at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:335)
+<br/>at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+<br/>at java.lang.ClassLoader.defineClass1(Native Method)
+<br/>at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+<br/>at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+<br/>at java.net.URLClassLoader.defineClass(URLClassLoader.java:467)
+<br/>at java.net.URLClassLoader.access$100(URLClassLoader.java:73)
+<br/>at java.net.URLClassLoader$1.run(URLClassLoader.java:368)
+<br/>at java.net.URLClassLoader$1.run(URLClassLoader.java:362)
+<br/>at java.security.AccessController.doPrivileged(Native Method)
+<br/>at java.net.URLClassLoader.findClass(URLClassLoader.java:361)
+<br/>at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+<br/>at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:335)
+<br/>at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+<br/>at com.codeborne.selenide.impl.ElementFinder.wrap(ElementFinder.java:36)
+<br/>at com.codeborne.selenide.SelenideDriver.find(SelenideDriver.java:209)
+<br/>at com.codeborne.selenide.Selenide.$(Selenide.java:250)
+<br/>at betSite.PutInBet.writeMesssage(PutInBet.java:28)
+<br/>25 lines not shown
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">betSite.RegistrationTestSuit:SingIn</h2>
-<div style="padding-left:3em">
-<p>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[.=&apos;Have an account?&apos;]&quot;}
-  (Session info: chrome=72.0.3626.109)
-  (Driver info: chromedriver=73.0.3683.20 (8e2b610813e167eee3619ac4ce6e42e3ec622017),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 67 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;TYUDM&apos;, ip: &apos;192.168.1.27&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_144&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{mobileEmulationEnabled=false, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, hasTouchScreen=false, platform=XP, acceptSslCerts=false, goog:chromeOptions={debuggerAddress=localhost:54749}, acceptInsecureCerts=false, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=ignore, applicationCacheEnabled=false, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=73.0.3683.20 (8e2b610813e167eee3619ac4ce6e42e3ec622017), userDataDir=C:\Users\tyudm\AppData\Local\Temp\scoped_dir10308_21667}, takesHeapSnapshot=true, pageLoadStrategy=normal, strictFileInteractability=false, databaseEnabled=false, handlesAlerts=true, version=72.0.3626.109, browserConnectionEnabled=false, proxy=Proxy(), nativeEvents=true, locationContextEnabled=true, cssSelectorsEnabled=true}]
-Session ID: ce93356adb216c2a1ed60e890e09f6ee
-*** Element info: {Using=xpath, value=//button[.=&apos;Have an account?&apos;]}</p>
-sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
-<br/>at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-<br/>at FunctionLibrary.Page.getElement(Page.java:56)
-<br/>at FunctionLibrary.Page.clickOn(Page.java:132)
-<br/>at betSite.RegistrationTestSuit.SingIn(RegistrationTestSuit.java:90)
-<br/>14 lines not shown
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">betSite.RegistrationTestSuit:LogIn</h2>
-<div style="padding-left:3em">
-<p>Cannot load page https://betting.team/en</p>
-FunctionLibrary.Page.pageShouldBe(Page.java:79)
-<br/>at betSite.RegistrationTestSuit.LogIn(RegistrationTestSuit.java:31)
-<br/>14 lines not shown
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m4">betSite.PutInBet:countMatches</h2>
+<h2 id="m2">betSite.PutInBet:countMatches</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>

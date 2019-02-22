@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]">
-  <test name="Test(failed)" parallel="true">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="betSite.RegistrationTestSuit">
+      <class name="betSite.PutInBet">
         <methods>
           <include name="setupClass1"/>
-          <include name="SingOut"/>
           <include name="tearDown"/>
-          <include name="SingIn"/>
-          <include name="LogIn"/>
+          <include name="writeMesssage"/>
         </methods>
-      </class> <!-- betSite.RegistrationTestSuit -->
+      </class> <!-- betSite.PutInBet -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

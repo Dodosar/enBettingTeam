@@ -7,7 +7,7 @@
         <methods>
           <include name="setupClass1"/>
           <include name="tearDown"/>
-          <include name="countMatches"/>
+          <include name="writeMesssage"/>
         </methods>
       </class> <!-- betSite.PutInBet -->
     </classes>
