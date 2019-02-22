@@ -1,7 +1,10 @@
-package FunctionLibrary;
+package betSite;
 
 
 import org.openqa.selenium.WebDriver;
+
+import FunctionLibrary.Page;
+import FunctionLibrary.typeValue;
 
 /*
  *created by Dima Tiurin Aug 16, 2018

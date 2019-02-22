@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertNotNull;
-import FunctionLibrary.MainPage;
 import Properties.TestData;
 
 /*create test by Dima Tiurin*/

@@ -1,7 +1,9 @@
-package FunctionLibrary;
+package betSite;
 
 import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.support.PageFactory;
+
+import FunctionLibrary.PageSingUp;
 
 public class MainPage extends PageSingUp {
 
@@ -12,4 +14,5 @@ public class MainPage extends PageSingUp {
 		/* url = Propert.get("url_mainpage"); */
 
 	}
+
 }

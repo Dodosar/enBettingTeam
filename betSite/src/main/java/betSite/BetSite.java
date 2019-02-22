@@ -3,9 +3,6 @@ package betSite;
 import org.openqa.selenium.WebDriver;
 
 
-import FunctionLibrary.FB;
-import FunctionLibrary.MainPage;
-
 public class BetSite {
 	WebDriver driver;
 
@@ -20,6 +17,10 @@ public class BetSite {
 	
 	public FB FBLogInPage() {
 		return new FB(driver);
+	}
+	
+	public Mathces mathcesPage() {
+		return new Mathces(driver);
 	}
 
 }
