@@ -1,15 +1,11 @@
 package FunctionLibrary;
 
-
-
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-
-
 
 //import java.util.List;
 import org.apache.commons.io.FileUtils;
@@ -23,10 +19,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 import Elements.Elements;
 
 public abstract class Page implements typeValue, selectChechbox {
-	
+
 	HttpURLConnection connection = null;
 
 	protected static WebDriver driver;
@@ -71,31 +68,29 @@ public abstract class Page implements typeValue, selectChechbox {
 
 	public Page pageShouldBe(Page expectedPage) throws MalformedURLException, IOException {
 		if (driver.getCurrentUrl().equals(expectedPage.getURL())) {
-			System.out.println("The page " + expectedPage.getURL()
-					+ " was loaded");
-		connectHttp(expectedPage);
+			System.out.println("The page " + expectedPage.getURL() + " was loaded");
+			connectHttp(expectedPage);
 			return expectedPage;
 		}
 		throw new RuntimeException("Cannot load page " + expectedPage.getURL());
 	}
 
-	private void connectHttp(Page expectedPage) throws IOException,
-			MalformedURLException, ProtocolException {
+	private void connectHttp(Page expectedPage) throws IOException, MalformedURLException, ProtocolException {
 		connection = (HttpURLConnection) new URL(expectedPage.getURL()).openConnection();
-		
+
 		connection.setRequestMethod("GET");
 		connection.setUseCaches(false);
 		connection.setConnectTimeout(1000);
 		connection.setReadTimeout(1000);
-		
+
 		connection.connect();
-		
-		System.out.println(connection.getResponseMessage() + ": " + connection.getResponseCode() );
-		
+
+		System.out.println(connection.getResponseMessage() + ": " + connection.getResponseCode());
+
 		connection.disconnect();
 	}
 
-	protected void pause(int i) {
+	public static void pause(int i) {
 		try {
 			Thread.sleep(1000 * i);
 			// isExistPng();
@@ -104,8 +99,7 @@ public abstract class Page implements typeValue, selectChechbox {
 		}
 	}
 
-	public static void takeSnapShot(WebDriver driver, String fileWithPath)
-			throws Exception {
+	public static void takeSnapShot(WebDriver driver, String fileWithPath) throws Exception {
 		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 		File ScrFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File(fileWithPath);
@@ -130,7 +124,7 @@ public abstract class Page implements typeValue, selectChechbox {
 
 	public Page clickOn(String element) {
 		getElement(element).click();
-		pause(1);
+		pause(3);
 		// isExistPng();
 		System.out.println("Click on element " + element);
 		return this;
@@ -138,8 +132,7 @@ public abstract class Page implements typeValue, selectChechbox {
 	}
 
 	public Page WaitUntilAndClick(String xpath) {
-		new WebDriverWait(driver, 5).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath(getXpath(xpath))));
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(getXpath(xpath))));
 		return this;
 
 	}
@@ -149,8 +142,7 @@ public abstract class Page implements typeValue, selectChechbox {
 		try {
 			String value = getElement(xpath).getAttribute(attribute);
 			if (value != null) {
-				System.out.println("Attribute is present "
-						+ attribute.toUpperCase());
+				System.out.println("Attribute is present " + attribute.toUpperCase());
 				result = true;
 			}
 		} catch (Exception e) {
@@ -169,16 +161,13 @@ public abstract class Page implements typeValue, selectChechbox {
 		pause(2);
 		try {
 			Actions action = new Actions(driver);
-			action.moveToElement(getElement(element))
-					.moveToElement(getElement(invElement)).click()
-					.build().perform();
+			action.moveToElement(getElement(element)).moveToElement(getElement(invElement)).click().build().perform();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public Page typeValueInRegistrationForm(String element,
-			String textforelements, String Attribute) {
+	public Page typeValueInRegistrationForm(String element, String textforelements, String Attribute) {
 		isAttributePresent(element, Attribute);
 		getElement(element).clear();
 		getElement(element).sendKeys(textforelements);
@@ -195,4 +184,24 @@ public abstract class Page implements typeValue, selectChechbox {
 			return clickOn(element);
 		}
 	}
+
+	public Page logo() {
+		return null;
+	};
+
+	public Page JSExecutor(WebDriver driver) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		
+		js.executeScript("window.scrollBy(0,1000)");
+		
+		return this;
+	}
+
+	public Page sendTextToChat(String string, String string2) {
+		return null;
+		
+	};
+	
+	
+	
 }

@@ -1,0 +1,11 @@
+18:54:44,071 DEBUG devpinoyLogger<strong>{1}</strong>:31 - opening webiste
+18:54:44,080  INFO devpinoyLogger<strong>{1}</strong>:32 - test info
+18:54:44,085 DEBUG devpinoyLogger<strong>{1}</strong>:34 - opening singup
+18:54:44,086 FATAL devpinoyLogger<strong>{1}</strong>:35 - This is a FATAL message.
+18:54:44,086 ERROR devpinoyLogger<strong>{1}</strong>:36 - This is an ERROR message.
+18:54:44,087  WARN devpinoyLogger<strong>{1}</strong>:37 - This is a WARN message.
+18:54:44,088  INFO devpinoyLogger<strong>{1}</strong>:38 - This is an INFO message.
+18:54:44,088 DEBUG devpinoyLogger<strong>{1}</strong>:39 - This is a DEBUG message.
+18:54:50,453 DEBUG devpinoyLogger<strong>{1}</strong>:94 - opening fb
+18:54:55,935 DEBUG devpinoyLogger<strong>{1}</strong>:104 - sing up in fb
+18:54:59,070 DEBUG devpinoyLogger<strong>{1}</strong>:112 - sing out from fb

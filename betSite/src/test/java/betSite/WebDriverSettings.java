@@ -1,17 +1,15 @@
 package betSite;
-
+//import org.testng.annotations.AfterTest;
+//import org.openqa.selenium.Platform;
 //import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-//import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,7 +22,6 @@ import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
-//import org.testng.annotations.AfterTest;
 
 import org.testng.annotations.BeforeTest;
 
@@ -32,7 +29,7 @@ import Properties.Propert;
 
 public class WebDriverSettings extends EmailReport {
 	public static WebDriver driver;
-	public static String browser;
+	public static String browser = null;
 
 	/*
 	 * @BeforeClass public static void setupClass() {
@@ -48,8 +45,7 @@ public class WebDriverSettings extends EmailReport {
 	@BeforeTest(alwaysRun = true)
 	public static void setupClass1() throws Exception {
 		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader reader = new BufferedReader(isr);
-		browser = null;
+		BufferedReader reader = new BufferedReader(isr);		
 		/*
 		 * //Check if parameter passed from TestNG is 'firefox'
 		 * if(browser.equalsIgnoreCase("firefox")){ //create firefox instance
@@ -58,9 +54,10 @@ public class WebDriverSettings extends EmailReport {
 		 */
 		try {
 			browser = reader.readLine();
+			
 			System.out.println(browser);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		selectBrowser(browser);
@@ -71,7 +68,9 @@ public class WebDriverSettings extends EmailReport {
 	 * "http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer"
 	 * ); driver.quit(); driver.close(); }
 	 */
-
+	
+	
+	//@AfterTest
 	@AfterSuite(alwaysRun = true)
 	public void tearDown() throws IOException {
 		sendPDFReportByGMail("tyudm@anzer.com", "Lbvf650065",
@@ -92,6 +91,7 @@ public class WebDriverSettings extends EmailReport {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public static WebDriver selectBrowser(String browser) throws MalformedURLException {
 		if (driver == null) {
 		switch (browser.toUpperCase()) {
@@ -106,9 +106,9 @@ public class WebDriverSettings extends EmailReport {
 			options.addArguments("--disable-extenstions");
 			driver = new ChromeDriver(options);
 			System.out.println("Welcome to Maven World and browser CH");
-			driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
-			driver.manage().timeouts().setScriptTimeout(120, TimeUnit.SECONDS);
-			// driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+			driver.manage().timeouts().setScriptTimeout(100, TimeUnit.SECONDS);
 			break;
 		case "IE":
 			try {
@@ -123,9 +123,6 @@ public class WebDriverSettings extends EmailReport {
 								true);
 				capability.setCapability(
 						InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
-
-				// URL hostURL = new URL("http://localhost:4444/wd/hub");
-				// driver = new RemoteWebDriver(hostURL, capability);
 				driver = new InternetExplorerDriver(capability);
 				driver.manage().timeouts()
 						.pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -133,7 +130,6 @@ public class WebDriverSettings extends EmailReport {
 						.setScriptTimeout(30, TimeUnit.SECONDS);
 				break;
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -142,7 +138,7 @@ public class WebDriverSettings extends EmailReport {
 			System.setProperty("webdriver.opera.driver",
 					Propert.getProperties("Opera_path"));
 			OperaOptions opera = new OperaOptions();
-			opera.addArguments("disable-infobars");
+			opera.addArguments("--disable-infobars");
 			opera.addArguments("--start-maximized");
 			opera.setBinary(Propert.getProperties("binery_opera"));
 			driver = new OperaDriver(opera);
@@ -166,9 +162,9 @@ public class WebDriverSettings extends EmailReport {
 					Propert.getProperties("Geckofriver_path"));
 			System.out.println(WebDriverManager.firefoxdriver().getVersions());
 			DesiredCapabilities capability = DesiredCapabilities.firefox();
-			FirefoxOptions options1 = new FirefoxOptions();
-			options1.addArguments("--start-maximized");
-			capability.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options1);
+			FirefoxOptions optionsFF = new FirefoxOptions();
+			optionsFF.addArguments("--start-maximized");
+			capability.setCapability(FirefoxOptions.FIREFOX_OPTIONS, optionsFF);
 			;
 			// URL hostURL = new URL("http://localhost:4444/wd/hub");
 			// driver = new RemoteWebDriver(hostURL,capability);
@@ -195,19 +191,27 @@ public class WebDriverSettings extends EmailReport {
 			 */
 			break;
 		default:
-			System.setProperty("webdriver.chrome.driver",
-					Propert.getProperties("Chromewebdriver_path"));
-			DesiredCapabilities capability1 = DesiredCapabilities.chrome();
-			ChromeOptions options2 = new ChromeOptions();
-			options2.addArguments(Arrays.asList("--start-maximized"));
-			capability1.setCapability(ChromeOptions.CAPABILITY, options2);
-			capability1.setBrowserName("chrome");
+			System.out.println("Welcome to Maven World and browser Chrome on RemoteWebDriver");
+			ChromeOptions option3 = new ChromeOptions();
+			option3.addArguments("--window-size=1920x1080");
+			//optionRemote.addArguments("--start-maximized");
+			/*Map<String, Object> options1 = new HashMap<String, Object>();
+			ArrayList<String> args = new ArrayList<String>();
+			args.add("enable-automation");
+			args.add("test-type=browser");
+			args.add("disable-plugins");
+			args.add("disable-infobars");
+			args.add("window-size=1920x1080");*/
+			//options1.put("args", args);
+			DesiredCapabilities capabilityRemote = DesiredCapabilities.chrome();			
+			capabilityRemote.setCapability(ChromeOptions.CAPABILITY, option3);
+			capabilityRemote.setBrowserName("chrome");
 			URL hostURL1 = new URL("http://localhost:4444/wd/hub");
-			driver = new RemoteWebDriver(hostURL1, capability1);
-			// System.out.println(WebDriverManager.chromedriver().getVersions());
-			// driver = new ChromeDriver(options2);
-			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-			driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+			driver = new RemoteWebDriver(hostURL1, capabilityRemote);
+			/*JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("window.resizeTo(1366, 768);");*/
+			driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+			driver.manage().timeouts().setScriptTimeout(120, TimeUnit.SECONDS);
 			break;
 		}
 		}

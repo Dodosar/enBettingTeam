@@ -19,7 +19,11 @@ public enum Elements implements GetTheXpath {
 	FBEMIAL("FBemail","//input[@id='email']"),
 	FBPASSWORD("FBpassword","//input[@id='pass']"), 
 	LOGINFB("loginFB","//input[@name='login']"),
-	MATCHESPAGE("matchesPage","//a[text()='Matches' and @class='l-header-menu__link']");
+	MATCHESPAGE("matchesPage","//a[text()='Matches' and @class='l-header-menu__link']"),
+	LOGO("logo","//*[@alt='Betting Insider']"),
+	CHAT("chat","//*[@class='bi-textarea']"),
+	CHATBUTTON("chatBut","//*[@class='ui-icon w-chat-send__icon']");
+	
 	
 	
 	private final String name;

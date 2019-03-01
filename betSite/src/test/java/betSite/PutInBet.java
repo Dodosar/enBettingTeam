@@ -1,10 +1,14 @@
 package betSite;
 
+import static org.testng.Assert.assertNotNull;
+
+
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
+import FunctionLibrary.Page;
+import Properties.TestData;
+
 
 /*
  *created by Dima Tiurin Sep 26, 2018
@@ -12,21 +16,36 @@ import static com.codeborne.selenide.Condition.*;
 
 public class PutInBet extends WebDriverSettings{
 	private BetSite objBettingSite;
+	private String ParentWindow;
 	Logger log = Logger.getLogger("devpinoyLogger");
+		
 	
 	@Test(priority = 0)
-	private void countMatches() throws Exception{
+	private void writeMesssage() {
+		System.out.println("Step 1: LogIN");
+		PageFactory.initElements(driver,BetSite.class).mathcesPage().open()
+		.clickOn("chat").
+		sendTextToChat("Who know the best bit?", "chat").
+		clickOn("chatBut").
+		clickOn("fb");
+		ParentWindow = driver.getWindowHandle();
+		for(String Subwindow: driver.getWindowHandles()){
+			driver.switchTo().window(Subwindow);
+			}
 		objBettingSite = new BetSite(driver);
-		org.apache.log4j.BasicConfigurator.configure();
-		System.out.println("Step 1: Check Title on Matches Page");
-		objBettingSite
-					.mainPage().open().clickOn("matchesPage");
+		objBettingSite.
+		FBLogInPage()
+		.typeValueInRegistrationForm("FBemail", TestData.value("fbemail"), "email")
+		.typeValueInRegistrationForm("FBpassword", TestData.value("fbpassword"), "pass")
+		.then()
+		.clickOn("loginFB");
+		Page.pause(3);
+		System.out.println("Step 2: Switch to Another Page and puIn Text");
+		log.debug("go to another window");
+		assertNotNull(ParentWindow);
+		driver.switchTo().window(ParentWindow);	
+		objBettingSite.mathcesPage().clickOn("chatBut");
 	}
 	
-	@Test(priority = 1)
-	private void writeMesssage() {
-		$(By.xpath("//*[@class='bi-field w-chat-send__field bi-mod-input-placeholder "
-				+ "bi-field--theme-gray']")).setValue("TestDima").pressEnter();
-	}
 }
 

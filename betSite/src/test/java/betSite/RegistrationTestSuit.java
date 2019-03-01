@@ -23,12 +23,14 @@ public class RegistrationTestSuit extends WebDriverSettings {
 		org.apache.log4j.BasicConfigurator.configure();
 		System.out.println("Step 1: Check Title on Main Page");
 		/* можно использывать этот способ обращения к обьекту*/
-		PageFactory.initElements(driver, MainPage.class).open();
+		PageFactory.initElements(driver, BetSite.class).mainPage().open()
+		.logo()
+		.pageShouldBe(objBettingSite.mainPage())
+		.and().clickOn("login")
+		.then().clickOn("signup").then();
 		log.debug("opening webiste");
 		log.info("test info");
 		ParentWindow = driver.getWindowHandle();
-		objBettingSite.mainPage().pageShouldBe(objBettingSite.mainPage()).and().clickOn("login")
-				.then().clickOn("signup").then();
 		log.debug("opening singup");
 		log.fatal("This is a FATAL message.");
 		log.error("This is an ERROR message.");
@@ -86,6 +88,7 @@ public class RegistrationTestSuit extends WebDriverSettings {
 */	
 	@Test(priority = 4)
 	private void SingIn() throws Exception {
+		System.out.println("Step 2: LogIn");
 		objBettingSite.mainPage().clickOn("haveaccount")
 			.then().clickOn("fb");
 		log.debug("opening fb");
@@ -103,6 +106,7 @@ public class RegistrationTestSuit extends WebDriverSettings {
 	}
 	@Test(priority = 5)
 	public void SingOut() throws Exception{
+		System.out.println("Step 3: LogOut");
 		driver.switchTo().window(ParentWindow);
 		objBettingSite.mainPage().pageShouldBe(objBettingSite.mainPage()).InVisiableElement("profic", "singout");	
 		log.debug("sing out from fb");

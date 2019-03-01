@@ -26,6 +26,6 @@ public class PageSingUp extends Page implements checkPopUpmessage{
 		return true;
 
 	}
-	
-	
+
+
 }
