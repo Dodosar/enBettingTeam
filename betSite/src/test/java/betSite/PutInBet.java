@@ -25,7 +25,7 @@ public class PutInBet extends WebDriverSettings{
 		System.out.println("Step 1: LogIN");
 		PageFactory.initElements(driver,BetSite.class).mathcesPage().open()
 		.clickOn("chat").
-		sendTextToChat("Who know the best bit?", "chat").
+		sendTextToChat("Who know the best bit and how win today?", "chat").
 		clickOn("chatBut").
 		clickOn("fb");
 		ParentWindow = driver.getWindowHandle();
@@ -45,6 +45,7 @@ public class PutInBet extends WebDriverSettings{
 		assertNotNull(ParentWindow);
 		driver.switchTo().window(ParentWindow);	
 		objBettingSite.mathcesPage().clickOn("chatBut");
+		
 	}
 	
 }
