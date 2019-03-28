@@ -42,8 +42,9 @@ public class WebDriverSettings extends EmailReport {
 	 * WebDriverWait wait = new WebDriverWait(driver, 30,500); }
 	 */
 	// *@Parameters("browser")
+	
 	@BeforeTest(alwaysRun = true)
-	public static void setupClass1() throws Exception {
+	public static void setupClass() throws Exception {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader reader = new BufferedReader(isr);		
 		/*

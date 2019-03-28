@@ -108,6 +108,23 @@
 			<artifactId>selenide</artifactId>
 			<version>5.2.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+				<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+		
+				<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>selenide</artifactId>
+			<version>5.2.0</version>
+		</dependency>
 
 	</dependencies>
 	<organization>
