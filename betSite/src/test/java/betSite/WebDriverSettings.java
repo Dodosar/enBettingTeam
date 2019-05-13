@@ -99,7 +99,7 @@ public class WebDriverSettings extends EmailReport {
 		case "CH":
 			System.setProperty("webdriver.chrome.driver",
 					Propert.getProperties("Chromewebdriver_path"));
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--start-maximized");
